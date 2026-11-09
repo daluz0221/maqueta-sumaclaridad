@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi cuenta · Jefes a Punto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=Poppins:wght@400;600&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body data-screen="06">
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <div data-component="header" data-session="user" data-variant="dark" data-current="cuenta"
+    data-course-href="#matricula" data-account-href="06-perfil.html?estado=sin-matricula" data-estado="sin-matricula"></div>
+  <div data-component="header" data-session="user" data-variant="dark" data-current="cuenta"
+    data-course-href="#matricula" data-account-href="06-perfil.html?estado=caducada" data-estado="caducada"></div>
+  <div data-component="header" data-session="user" data-variant="dark" data-current="cuenta" data-estado="vigente"></div>
+
+  <div class="sysmsg sysmsg--success" role="status" data-flash hidden>
+    <div class="container sysmsg__inner">
+      <span class="sysmsg__icon" aria-hidden="true">✓</span>
+      <p class="sysmsg__text">Idioma actualizado.</p>
+      <button type="button" class="sysmsg__close" data-dismiss aria-label="Cerrar mensaje">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <main id="main">
+    <section class="page-hero on-dark">
+      <div class="container">
+        <p class="eyebrow">Mi cuenta</p>
+        <h1 class="display display--m">Hola, Ana María</h1>
+        <p class="status-line" data-estado="sin-matricula"><span class="badge badge--sin-acceso">Sin acceso</span><span>Aún no tienes matrícula activa</span></p>
+        <p class="status-line" data-estado="vigente"><span class="badge badge--vigente">Vigente</span><span>Acceso hasta el 2 abr 2027</span></p>
+        <p class="status-line" data-estado="caducada"><span class="badge badge--caducada">Caducada</span><span>Tu acceso terminó el 10 sep 2026</span></p>
+      </div>
+    </section>
+    <div class="tear" style="--from:var(--exhibicion);--to:var(--papel)" aria-hidden="true"></div>
+
+    <div class="band band--tight band--papel" style="padding-bottom:80px">
+      <div class="container profile">
+
+        <!-- 1. Datos de la cuenta -->
+        <section class="card" aria-labelledby="datos-title">
+          <div class="card__head">
+            <h2 id="datos-title" class="card__title">Datos de la cuenta</h2>
+            <span class="meta">Solo lectura</span>
+          </div>
+          <dl class="data-list">
+            <div><dt>Nombre</dt><dd>Ana María Torres</dd></div>
+            <div><dt>Email</dt><dd>ana.torres@empresa.com</dd></div>
+            <div><dt>Teléfono</dt><dd>+52 55 1234 5678</dd></div>
+            <div><dt>Cargo</dt><dd>Jefa de operaciones</dd></div>
+            <div><dt>Empresa</dt><dd>No indicada</dd></div>
+            <div><dt>Profesión</dt><dd>Ingeniera industrial</dd></div>
+            <div><dt>Idioma preferido</dt><dd data-lang-label>Español</dd></div>
+            <div><dt>Consentimiento de datos</dt><dd>Aceptado el 2 sep 2026 · <a href="11-legal.html?doc=consentimiento&amp;ambito=latam">Ver texto</a></dd></div>
+          </dl>
+
+          <div class="settings">
+            <div>
+              <h3 class="settings__title">Idioma</h3>
+              <p class="meta">Define el idioma de los títulos, las introducciones, los recursos y la plataforma. Si un texto no existe en inglés, se muestra en español.</p>
+              <form class="inline-form" id="lang-form" novalidate data-validate data-on-success="lang" style="margin-top:12px">
+                <div class="field">
+                  <label for="idioma-perfil" class="sr-only">Idioma preferido</label>
+                  <select class="input input--select" id="idioma-perfil" name="idioma">
+                    <option value="es" lang="es">Español</option>
+                    <option value="en" lang="en">English</option>
+                  </select>
+                </div>
+                <button class="btn btn--secondary" type="submit">Guardar idioma</button>
+              </form>
+            </div>
+            <div>
+              <h3 class="settings__title">Contraseña</h3>
+              <p class="meta">Te enviaremos un enlace a tu email para crear una contraseña nueva.</p>
+              <a class="btn btn--outline btn--sm" href="04-recuperar.html" style="margin-top:12px">Cambiar contraseña</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. Matrícula -->
+        <section class="card" id="matricula" aria-labelledby="mat-title" style="scroll-margin-top:16px">
+          <div class="card__head">
+            <h2 id="mat-title" class="card__title">Matrícula</h2>
+          </div>
+
+          <div class="empty" data-estado="sin-matricula">
+            <span class="badge badge--sin-acceso">Sin acceso</span>
+            <p>Aún no tienes matrículas. Cuando el pago se confirme, un administrador activará tu acceso.</p>
+          </div>
+
+          <table class="rtable" data-estado="vigente caducada">
+            <caption class="sr-only">Tus matrículas</caption>
+            <thead>
+              <tr><th scope="col">Curso</th><th scope="col">Estado</th><th scope="col">Activación</th><th scope="col">Caducidad</th><th scope="col"><span class="sr-only">Acción</span></th></tr>
+            </thead>
+            <tbody>
+              <tr data-estado="vigente">
+                <td class="rtable__course" data-label="Curso">Jefes a Punto</td>
+                <td data-label="Estado"><span class="badge badge--vigente">Vigente</span></td>
+                <td data-label="Activación">2 oct 2026</td>
+                <td data-label="Caducidad">2 abr 2027</td>
+                <td class="rtable__action"><a class="btn btn--primary btn--sm" href="08-modulos.html">Entrar al curso</a></td>
+              </tr>
+              <tr data-estado="caducada">
+                <td class="rtable__course" data-label="Curso">Jefes a Punto</td>
+                <td data-label="Estado"><span class="badge badge--caducada">Caducada</span></td>
+                <td data-label="Activación">10 mar 2026</td>
+                <td data-label="Caducidad">10 sep 2026</td>
+                <td class="rtable__action"><span class="meta">Sin acceso al curso</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- 3. Opinión -->
+        <section class="card" aria-labelledby="op-title">
+          <div class="card__head">
+            <h2 id="op-title" class="card__title">Tu opinión</h2>
+            <span class="badge badge--en-revision" data-estado="vigente">En revisión</span>
+          </div>
+          <p data-estado="sin-matricula caducada">Aún no has enviado ninguna opinión sobre el curso.</p>
+          <p data-estado="vigente">Tu opinión está pendiente de revisión. Se publicará en la página de inicio cuando el equipo la apruebe.</p>
+          <div style="margin-top:18px">
+            <a class="btn btn--outline" href="10-opinion.html?estado=no-enviada" data-estado="sin-matricula caducada">Dejar una opinión</a>
+            <a class="btn btn--outline" href="10-opinion.html?estado=pendiente" data-estado="vigente">Ver mi opinión</a>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <div data-component="footer" data-from="papel"></div>
+  <div class="mockbar"></div>
+</body>
+</html>

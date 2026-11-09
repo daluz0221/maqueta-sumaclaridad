@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Legal · Jefes a Punto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=Poppins:wght@400;600&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body data-screen="11">
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <div data-component="header" data-session="anon" data-variant="dark"></div>
+
+  <main id="main" data-legal>
+    <section class="page-hero on-dark">
+      <div class="container">
+        <p class="eyebrow">Legal</p>
+        <h1 class="display display--m" data-bind="doc-title">Política de privacidad</h1>
+        <p class="lead">Ámbito: <strong data-bind="scope-label">LATAM</strong></p>
+      </div>
+    </section>
+    <div class="tear" style="--from:var(--exhibicion);--to:var(--papel)" aria-hidden="true"></div>
+
+    <div class="band band--tight band--papel" style="padding-bottom:88px">
+      <div class="container">
+
+        <div class="legal-controls">
+          <div>
+            <span class="legal-controls__label" id="doc-label">Documento</span>
+            <div class="tabs" role="group" aria-labelledby="doc-label">
+              <button type="button" class="tab" data-doc="privacidad" aria-pressed="true">Privacidad</button>
+              <button type="button" class="tab" data-doc="terminos" aria-pressed="false">Términos</button>
+              <button type="button" class="tab" data-doc="consentimiento" aria-pressed="false">Consentimiento</button>
+            </div>
+          </div>
+          <div>
+            <span class="legal-controls__label" id="scope-label">Ámbito geográfico</span>
+            <div class="tabs" role="group" aria-labelledby="scope-label">
+              <button type="button" class="tab" data-scope="latam" aria-pressed="true">LATAM</button>
+              <button type="button" class="tab" data-scope="espana" aria-pressed="false">España</button>
+              <button type="button" class="tab" data-scope="eeuu" aria-pressed="false">Estados Unidos</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="legal-layout">
+          <nav class="toc" aria-labelledby="toc-title">
+            <p class="toc__title" id="toc-title">En esta página</p>
+            <ol>
+              <li><a href="#responsable">1. Responsable</a></li>
+              <li><a href="#datos">2. Datos que se piden</a></li>
+              <li><a href="#conservacion">3. Conservación</a></li>
+              <li><a href="#derechos">4. Derechos</a></li>
+            </ol>
+          </nav>
+
+          <article class="container--text" style="margin:0">
+            <div class="pending-banner" role="note">
+              <p class="pending-banner__title">Texto legal pendiente</p>
+              <p>Esta página muestra la estructura del documento. La redacción jurídica para el ámbito <strong data-bind="scope-label">LATAM</strong> está pendiente.</p>
+            </div>
+
+            <section class="legal-section" id="responsable" aria-labelledby="h-resp">
+              <h2 id="h-resp">1. Responsable</h2>
+              <p class="meta">Quién trata los datos y cómo contactar. Pendiente de redacción.</p>
+              <div class="skeleton" aria-hidden="true"><span></span><span></span><span></span></div>
+            </section>
+            <section class="legal-section" id="datos" aria-labelledby="h-datos">
+              <h2 id="h-datos">2. Datos que se piden</h2>
+              <p class="meta">Nombre, email, teléfono, cargo, empresa, profesión e idioma preferido. Pendiente de redacción.</p>
+              <div class="skeleton" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+            </section>
+            <section class="legal-section" id="conservacion" aria-labelledby="h-cons">
+              <h2 id="h-cons">3. Conservación</h2>
+              <p class="meta">Durante cuánto tiempo se guardan los datos. Pendiente de redacción.</p>
+              <div class="skeleton" aria-hidden="true"><span></span><span></span><span></span></div>
+            </section>
+            <section class="legal-section" id="derechos" aria-labelledby="h-der">
+              <h2 id="h-der">4. Derechos</h2>
+              <p class="meta">Cómo consultar, corregir o eliminar tus datos. Pendiente de redacción.</p>
+              <div class="skeleton" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+            </section>
+
+            <p class="meta" style="margin-top:24px">Última actualización: pendiente.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div data-component="footer" data-from="papel"></div>
+  <div class="mockbar"></div>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Módulo · Jefes a Punto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=Poppins:wght@400;600&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body data-screen="09">
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <div data-component="header" data-session="user" data-current="curso"></div>
+
+  <!-- Barra del curso: fija al hacer scroll -->
+  <div class="course-bar">
+    <div class="container course-bar__inner">
+      <nav aria-label="Miga de pan">
+        <ol class="crumbs">
+          <li><a href="08-modulos.html">Jefes a Punto</a></li>
+          <li><span aria-current="page">Módulo <span data-bind="num">03</span></span></li>
+        </ol>
+      </nav>
+      <button type="button" class="btn btn--outline btn--sm course-bar__btn" data-sheet-open="modules-sheet" aria-controls="modules-sheet" aria-expanded="false">Módulos</button>
+    </div>
+    <nav class="container module-index" aria-label="Índice de módulos" data-component="module-index"></nav>
+  </div>
+
+  <main id="main" data-module-page data-default-module="delegacion"
+    data-completed='{"completo":[1,2],"sin-recursos":[1,2],"completado":[1,2,"current"],"staff":[1,2]}'>
+
+    <div class="sysmsg sysmsg--success" role="status" data-estado="completado">
+      <div class="container sysmsg__inner">
+        <span class="sysmsg__icon" aria-hidden="true">✓</span>
+        <p class="sysmsg__text">El equipo marcó este módulo como completado.</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <header class="mod-head">
+        <span class="mod-head__num" aria-hidden="true" data-bind="num">03</span>
+        <h1 class="display display--m"><span class="sr-only">Módulo <span data-bind="num">03</span>: </span><span data-bind="title">Delegación efectiva</span></h1>
+        <div class="mod-head__badges">
+          <span class="badge badge--pendiente" data-estado="completo sin-recursos staff">Pendiente</span>
+          <span class="badge badge--completado" data-estado="completado">Completado</span>
+          <span class="badge badge--no-publicado" data-estado="staff">No publicado</span>
+        </div>
+        <p class="meta" data-estado="completo sin-recursos">El equipo del curso marca el módulo como completado; no tienes que hacer nada aquí.</p>
+        <p class="meta" data-estado="staff">Vista de staff: este módulo aún no es visible para los alumnos.</p>
+      </header>
+
+      <!-- 1. Introducción -->
+      <section class="mod-section" aria-labelledby="intro-title">
+        <h2 id="intro-title" class="mod-section__title">Introducción</h2>
+        <span class="pending-tag">Contenido pendiente del cliente</span>
+        <p class="lead">Aquí va la introducción del módulo: dos o tres frases sobre qué vas a trabajar y por qué importa en tu día a día con el equipo.</p>
+      </section>
+
+      <!-- 2. Vídeo: tarea principal -->
+      <section class="mod-section" aria-labelledby="video-title">
+        <h2 id="video-title" class="mod-section__title">Vídeo</h2>
+
+        <figure class="video" data-estado="completo completado staff">
+          <div class="video__frame" data-duration="1450">
+            <div class="video__poster" aria-hidden="true"></div>
+            <span class="video__chip" aria-hidden="true">Maqueta · embed Vimeo Pro o Bunny</span>
+            <button type="button" class="video__play" data-video-play aria-pressed="false" aria-label="Reproducir vídeo">
+              <svg class="video__ring" viewBox="0 0 84 84" aria-hidden="true"><circle class="track" cx="42" cy="42" r="40"/><circle class="bar" cx="42" cy="42" r="40"/></svg>
+              <svg class="video__icon-play" viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+              <svg class="video__icon-pause" viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+            </button>
+            <div class="video__controls" aria-hidden="true">
+              <span data-video-time>04:21 / 24:10</span>
+              <span class="video__bar"><span></span></span>
+              <span>HD</span>
+            </div>
+          </div>
+          <figcaption class="video__caption">
+            <p class="video__title"><span data-bind="title">Delegación efectiva</span> · Vídeo del módulo</p>
+            <p class="meta" style="margin:0">Aprox. 24 min · Solo reproducción en línea</p>
+          </figcaption>
+        </figure>
+
+        <p class="mod-empty" data-estado="sin-recursos">Este módulo todavía no tiene vídeo.</p>
+      </section>
+
+      <div class="mod-body">
+        <!-- 3. Texto de apoyo -->
+        <section class="mod-section mod-section--text" aria-labelledby="text-title">
+          <h2 id="text-title" class="mod-section__title">Texto de apoyo</h2>
+          <span class="pending-tag">Contenido pendiente del cliente</span>
+          <div class="prose">
+            <p>En este espacio irá el texto de apoyo del módulo: ideas clave, ejemplos y preguntas para aplicar lo que viste en el vídeo.</p>
+            <div class="skeleton" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+            <h3>Subtítulo de ejemplo</h3>
+            <div class="skeleton" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+          </div>
+        </section>
+
+        <!-- 4. PDF -->
+        <section class="mod-section mod-section--pdf" aria-labelledby="pdf-title">
+          <h2 id="pdf-title" class="mod-section__title">Documentos <small>PDF</small></h2>
+
+          <div data-estado="completo completado staff">
+            <ul class="pdf-list">
+              <li class="pdf-row">
+                <span class="pdf-row__icon" aria-hidden="true">PDF</span>
+                <div class="pdf-row__info"><p class="pdf-row__title">Guía del módulo</p><p class="meta">Título de ejemplo</p></div>
+                <a class="btn btn--outline btn--sm" href="#" download aria-label="Descargar Guía del módulo, PDF">Descargar</a>
+              </li>
+              <li class="pdf-row">
+                <span class="pdf-row__icon" aria-hidden="true">PDF</span>
+                <div class="pdf-row__info"><p class="pdf-row__title">Hoja de trabajo</p><p class="meta">Título de ejemplo</p></div>
+                <a class="btn btn--outline btn--sm" href="#" download aria-label="Descargar Hoja de trabajo, PDF">Descargar</a>
+              </li>
+              <li class="pdf-row">
+                <span class="pdf-row__icon" aria-hidden="true">PDF</span>
+                <div class="pdf-row__info"><p class="pdf-row__title">Resumen para imprimir</p><p class="meta">Título de ejemplo</p></div>
+                <a class="btn btn--outline btn--sm" href="#" download aria-label="Descargar Resumen para imprimir, PDF">Descargar</a>
+              </li>
+            </ul>
+            <p class="note">La descarga incluye una marca de agua con tu nombre, tu correo y la fecha.</p>
+          </div>
+
+          <p class="mod-empty" data-estado="sin-recursos">Este módulo todavía no tiene documentos PDF.</p>
+        </section>
+      </div>
+
+      <!-- 5. Saltar a otro módulo -->
+      <nav class="pager" aria-label="Otros módulos">
+        <a class="pager__link" href="#" data-bind="prev">
+          <span class="pager__dir">← Anterior</span>
+          <span class="pager__title">—</span>
+        </a>
+        <a class="pager__link pager__link--next" href="#" data-bind="next">
+          <span class="pager__dir">Siguiente →</span>
+          <span class="pager__title">—</span>
+        </a>
+        <button type="button" class="btn btn--outline pager__all" data-sheet-open="modules-sheet" aria-controls="modules-sheet" aria-expanded="false">Ver los seis módulos</button>
+      </nav>
+    </div>
+  </main>
+
+  <div data-component="module-sheet" data-id="modules-sheet"></div>
+  <div data-component="footer" data-from="papel"></div>
+  <div class="mockbar"></div>
+</body>
+</html>

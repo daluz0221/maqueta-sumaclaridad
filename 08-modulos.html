@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jefes a Punto · Módulos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=Poppins:wght@400;600&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body data-screen="08">
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <div data-component="header" data-session="user" data-variant="dark" data-current="curso"></div>
+
+  <div class="sysmsg sysmsg--success" role="status" data-estado="todos">
+    <div class="container sysmsg__inner">
+      <span class="sysmsg__icon" aria-hidden="true">✓</span>
+      <p class="sysmsg__text">Completaste los seis módulos. Tu certificado ya está disponible.</p>
+      <button type="button" class="sysmsg__close" data-dismiss aria-label="Cerrar mensaje">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <main id="main" data-completed='{"ninguno":[],"algunos":[1,2,4],"todos":[1,2,3,4,5,6]}'>
+    <section class="band band--dark on-dark" style="padding-top:0" aria-labelledby="course-title">
+      <div class="container">
+        <div class="course-hero">
+          <nav aria-label="Miga de pan">
+            <ol class="crumbs">
+              <li><a href="07-mis-cursos.html">Mis cursos</a></li>
+              <li><span aria-current="page">Jefes a Punto</span></li>
+            </ol>
+          </nav>
+          <div class="course-hero__grid">
+            <div>
+              <h1 id="course-title" class="display display--xl">Jefes a <span class="w600">Punto</span></h1>
+            </div>
+            <div class="course-hero__aside">
+              <p style="margin:0">Seis módulos para dirigir equipos con más claridad. Ábrelos en el orden que prefieras; el número es solo una sugerencia de lectura.</p>
+              <p class="access-line"><span class="badge badge--vigente">Vigente</span><span>Acceso vigente hasta el 2 abr 2027</span></p>
+              <div class="progress" data-component="progress"></div>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="sr-only">Módulos</h2>
+        <ol class="module-list" data-component="module-list" data-variant="course"></ol>
+        <p class="meta" style="margin-top:18px">El estado «Completado» lo marca el equipo del curso.</p>
+
+        <!-- Certificado deshabilitado -->
+        <div class="cert-locked" data-estado="ninguno algunos" aria-labelledby="cert-title">
+          <div>
+            <h2 id="cert-title" class="cert-locked__title">Certificado</h2>
+            <p id="cert-help" style="margin-top:8px"><strong data-missing-text>Faltan módulos por aprobación del equipo.</strong> El certificado se habilita cuando los seis módulos estén marcados como completados.</p>
+          </div>
+          <button class="btn" type="button" disabled aria-describedby="cert-help">Descargar certificado</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Curso completado (pantalla 12) -->
+    <div data-estado="todos">
+      <div class="tear" style="--from:var(--exhibicion);--to:var(--granite)" aria-hidden="true"></div>
+      <section class="finale finale--granite" aria-labelledby="done-title">
+        <div class="finale__media" aria-hidden="true"></div>
+        <p class="ph-tag" aria-hidden="true">Fotografía pendiente del cliente</p>
+        <div class="container finale__inner">
+          <p class="eyebrow" style="margin:0">Jefes a Punto · 6 de 6</p>
+          <h2 id="done-title" class="display display--xl display--fit">Curso <span class="w600">completado</span></h2>
+          <div class="ticket-wrap">
+            <div class="ticket">
+              <div class="ticket__main">
+                <p class="eyebrow" style="margin:0">Certificado</p>
+                <p class="ticket__name">Ana María Torres</p>
+                <p class="ticket__divider"><span aria-hidden="true">✦</span></p>
+                <p class="ticket__course">Jefes a Punto</p>
+                <p class="meta" style="margin:0">Seis módulos completados</p>
+              </div>
+              <div class="ticket__stub">
+                <a class="btn btn--primary btn--block" href="#" download>Descargar certificado</a>
+                <p class="meta" style="margin:0">Archivo PDF con tu nombre.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div data-component="footer" data-from="exhibicion" data-estado="ninguno algunos"></div>
+  <div data-component="footer" data-from="granite" data-estado="todos"></div>
+  <div class="mockbar"></div>
+</body>
+</html>

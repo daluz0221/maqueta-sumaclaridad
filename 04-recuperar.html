@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recuperar contraseña · Jefes a Punto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=Poppins:wght@400;600&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body data-screen="04">
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <div data-component="header" data-session="anon" data-variant="dark" data-current="entrar"></div>
+
+  <main id="main">
+    <section class="page-hero on-dark">
+      <div class="container container--narrow">
+        <p class="eyebrow">
+          <span data-estado="paso-1">Paso 1 de 4</span><span data-estado="paso-2">Paso 2 de 4</span><span data-estado="paso-3">Paso 3 de 4</span><span data-estado="paso-4">Paso 4 de 4</span>
+          · Contraseña
+        </p>
+        <h1 class="display display--m" data-estado="paso-1">Recuperar contraseña</h1>
+        <h1 class="display display--m" data-estado="paso-2">Revisa tu correo</h1>
+        <h1 class="display display--m" data-estado="paso-3">Nueva contraseña</h1>
+        <h1 class="display display--m" data-estado="paso-4">Contraseña actualizada</h1>
+      </div>
+    </section>
+    <div class="tear" style="--from:var(--exhibicion);--to:var(--papel)" aria-hidden="true"></div>
+
+    <section class="auth">
+      <div class="container container--narrow">
+
+        <!-- 1. Pedir correo -->
+        <div data-estado="paso-1">
+          <p class="lead" style="margin-bottom:28px">Escribe el email de tu cuenta y te enviaremos un enlace para crear una contraseña nueva.</p>
+          <form novalidate data-validate data-on-success="state:paso-2">
+            <div class="field">
+              <label for="reset-email">Email</label>
+              <input class="input" id="reset-email" name="email" type="email" autocomplete="email" inputmode="email" required data-msg-required="Escribe el email de tu cuenta.">
+            </div>
+            <div class="form-actions">
+              <button class="btn btn--primary btn--block" type="submit">Enviar enlace</button>
+            </div>
+          </form>
+          <p class="auth__foot"><a href="03-ingreso.html">Volver a Entrar</a></p>
+        </div>
+
+        <!-- 2. Aviso de correo enviado (sin confirmar si la cuenta existe) -->
+        <div class="status-panel" data-estado="paso-2">
+          <span class="status-panel__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3.5 7l8.5 6.5L20.5 7"/></svg>
+          </span>
+          <p class="lead">Si hay una cuenta asociada a ese email, te enviamos un enlace para crear una contraseña nueva.</p>
+          <p class="meta">Puede tardar unos minutos. Revisa también la carpeta de correo no deseado.</p>
+          <a class="btn btn--outline btn--block" href="03-ingreso.html">Volver a Entrar</a>
+          <button type="button" class="link-btn" data-mock-state="paso-3">Simular el enlace del correo</button>
+        </div>
+
+        <!-- 3. Nueva contraseña -->
+        <div data-estado="paso-3">
+          <p class="lead" style="margin-bottom:28px">Elige una contraseña nueva para tu cuenta.</p>
+          <form novalidate data-validate data-on-success="state:paso-4">
+            <div class="alert" data-error-summary tabindex="-1" role="alert" hidden>
+              <p class="alert__title">Revisa los campos antes de continuar</p>
+              <ul></ul>
+            </div>
+            <div class="field">
+              <label for="new-password">Contraseña nueva</label>
+              <div class="password">
+                <input class="input" id="new-password" name="password" type="password" autocomplete="new-password" minlength="8" required aria-describedby="np-help" data-msg-required="Escribe una contraseña nueva.">
+                <button type="button" class="password__toggle" data-toggle-password="#new-password" aria-pressed="false" aria-label="Mostrar contraseña">Mostrar</button>
+              </div>
+              <p class="field__help" id="np-help">Mínimo 8 caracteres.</p>
+            </div>
+            <div class="field">
+              <label for="new-password2">Confirma la contraseña</label>
+              <input class="input" id="new-password2" name="password2" type="password" autocomplete="new-password" required data-match="#new-password" data-msg-required="Repite la contraseña.">
+            </div>
+            <div class="form-actions">
+              <button class="btn btn--primary btn--block" type="submit">Guardar contraseña</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- 4. Listo -->
+        <div class="status-panel" data-estado="paso-4">
+          <span class="status-panel__icon" aria-hidden="true">✓</span>
+          <p class="lead">Ya puedes entrar con tu contraseña nueva.</p>
+          <a class="btn btn--primary btn--block" href="03-ingreso.html">Entrar</a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <div data-component="footer" data-from="papel"></div>
+  <div class="mockbar"></div>
+</body>
+</html>

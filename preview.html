@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Visor de anchuras · Jefes a Punto</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/app.js" defer></script>
+  <style>
+    body { background: var(--silver); }
+    .pv-bar { position: sticky; top: 0; z-index: 5; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding: 10px 16px; background: var(--tinta); color: var(--blanco); }
+    .pv-bar select { min-height: 40px; padding: 0 12px; border-radius: 8px; border: 0; background: var(--blanco); color: var(--tinta); }
+    .pv-bar .segmented { border-color: var(--blanco); }
+    .pv-bar .segmented__btn { min-height: 34px; }
+    .pv-bar a { color: var(--blanco); font-size: 14px; }
+    .pv-size { font-size: 13px; opacity: .8; }
+    .pv-stage { padding: 24px 16px 48px; display: flex; justify-content: center; }
+    .pv-frame { background: var(--papel); box-shadow: 0 24px 60px -28px rgba(0,0,0,.6); border-radius: 18px; overflow: hidden; flex: none; }
+    .pv-frame iframe { display: block; border: 0; transform-origin: 0 0; }
+  </style>
+</head>
+<body>
+  <div class="pv-bar on-dark">
+    <a href="index.html">← Índice</a>
+    <label class="sr-only" for="pv-page">Pantalla</label>
+    <select id="pv-page"></select>
+    <div class="segmented" role="group" aria-label="Anchura">
+      <button type="button" class="segmented__btn" data-w="390">390</button>
+      <button type="button" class="segmented__btn" data-w="768">768</button>
+      <button type="button" class="segmented__btn" data-w="1280">1280</button>
+      <button type="button" class="segmented__btn" data-w="1440">1440</button>
+    </div>
+    <span class="pv-size" id="pv-size"></span>
+    <a id="pv-open" href="#" target="_blank" rel="noopener">Abrir sola</a>
+  </div>
+  <div class="pv-stage"><div class="pv-frame" id="pv-frame"><iframe id="pv-iframe" title="Vista previa de la pantalla"></iframe></div></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var HEIGHTS = { 390: 844, 768: 1024, 1280: 800, 1440: 900 };
+      var q = new URLSearchParams(location.search);
+      var page = q.get('p') || '01-home.html';
+      var w = Number(q.get('w')) || 390;
+      var sel = document.getElementById('pv-page');
+      var iframe = document.getElementById('pv-iframe');
+      var frame = document.getElementById('pv-frame');
+
+      var opts = [];
+      window.JAP.SCREENS.forEach(function (s) {
+        opts.push([s.file, s.n + ' · ' + s.name]);
+        s.states.forEach(function (st) { opts.push([s.file + '?estado=' + st[0], '    ' + s.n + ' · ' + st[1]]); });
+        (s.links || []).forEach(function (l) { opts.push([s.file + l[0], '    ' + s.n + ' · ' + l[1]]); });
+      });
+      sel.innerHTML = opts.map(function (o) { return '<option value="' + o[0] + '">' + o[1].replace(/ /g, '&nbsp;') + '</option>'; }).join('');
+      if (!opts.some(function (o) { return o[0] === page; })) {
+        sel.insertAdjacentHTML('afterbegin', '<option value="' + page + '">' + page + '</option>');
+      }
+      sel.value = page;
+
+      function layout() {
+        var h = HEIGHTS[w] || 900;
+        var avail = document.documentElement.clientWidth - 32;
+        var scale = Math.min(1, avail / w);
+        iframe.style.width = w + 'px';
+        iframe.style.height = h + 'px';
+        iframe.style.transform = 'scale(' + scale + ')';
+        frame.style.width = Math.round(w * scale) + 'px';
+        frame.style.height = Math.round(h * scale) + 'px';
+        document.getElementById('pv-size').textContent = w + ' × ' + h + (scale < 1 ? ' · ' + Math.round(scale * 100) + '%' : '');
+        document.querySelectorAll('[data-w]').forEach(function (b) { b.setAttribute('aria-pressed', String(Number(b.dataset.w) === w)); });
+      }
+      function load() {
+        iframe.src = page;
+        document.getElementById('pv-open').href = page;
+        try {
+          var u = new URL(location.href);
+          u.searchParams.set('p', page); u.searchParams.set('w', w);
+          history.replaceState(null, '', u);
+        } catch (e) {}
+      }
+      sel.addEventListener('change', function () { page = sel.value; load(); });
+      document.querySelectorAll('[data-w]').forEach(function (b) {
+        b.addEventListener('click', function () { w = Number(b.dataset.w); layout(); load(); });
+      });
+      window.addEventListener('resize', layout);
+      layout(); load();
+    });
+  </script>
+</body>
+</html>

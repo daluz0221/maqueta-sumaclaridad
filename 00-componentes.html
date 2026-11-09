@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Componentes · Jefes a Punto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=Poppins:wght@400;600&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/app.js" defer></script>
+  <style>
+    .swatches { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    @media (min-width: 768px) { .swatches { grid-template-columns: repeat(4, 1fr); } }
+    .swatch { border-radius: 16px; overflow: hidden; border: 1px solid rgba(26,26,26,.1); background: var(--blanco); }
+    .swatch__color { height: 96px; }
+    .swatch__info { padding: 10px 14px; font-size: 14px; }
+    .swatch__info code { display: block; color: var(--tinta-suave); font-size: 13px; }
+    .demo-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    .demo-grid { display: grid; gap: 24px; }
+    @media (min-width: 1280px) { .demo-grid--2 { grid-template-columns: 1fr 1fr; } }
+    .comp-title { font-family: var(--f-display); font-size: 2rem; margin-bottom: 18px; }
+    .comp { padding-block: 40px; border-top: 1px solid var(--silver); }
+  </style>
+</head>
+<body data-screen="00">
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <div data-component="header" data-session="anon" data-variant="dark"></div>
+
+  <main id="main" data-completed='{"default":[1,2]}'>
+    <section class="page-hero on-dark">
+      <div class="container">
+        <p class="eyebrow">Biblioteca de la maqueta</p>
+        <h1 class="display display--m">Componentes</h1>
+        <p class="lead">Piezas definidas una vez y reutilizadas en las doce pantallas.</p>
+      </div>
+    </section>
+    <div class="tear" style="--from:var(--exhibicion);--to:var(--papel)" aria-hidden="true"></div>
+
+    <div class="container" style="padding-bottom:64px">
+
+      <section class="comp" aria-labelledby="c-color">
+        <h2 id="c-color" class="comp-title">Color</h2>
+        <ul class="swatches">
+          <li class="swatch"><div class="swatch__color" style="background:#F3EDE2"></div><div class="swatch__info"><strong>Papel</strong><code>#F3EDE2</code></div></li>
+          <li class="swatch"><div class="swatch__color" style="background:#8A8E73"></div><div class="swatch__info"><strong>Granite</strong><code>#8A8E73</code></div></li>
+          <li class="swatch"><div class="swatch__color" style="background:#B5B7A9"></div><div class="swatch__info"><strong>Silver</strong><code>#B5B7A9</code></div></li>
+          <li class="swatch"><div class="swatch__color" style="background:#B7B1A9"></div><div class="swatch__info"><strong>Silk</strong><code>#B7B1A9</code></div></li>
+          <li class="swatch"><div class="swatch__color" style="background:#1A1A1A"></div><div class="swatch__info"><strong>Tinta</strong><code>#1A1A1A</code></div></li>
+          <li class="swatch"><div class="swatch__color" style="background:#3A3A38"></div><div class="swatch__info"><strong>Tinta suave</strong><code>#3A3A38</code></div></li>
+          <li class="swatch"><div class="swatch__color" style="background:#2C3328"></div><div class="swatch__info"><strong>Fondo exhibición</strong><code>#2C3328</code></div></li>
+          <li class="swatch"><div class="swatch__color" style="background:#F7F4EE"></div><div class="swatch__info"><strong>Blanco roto</strong><code>#F7F4EE</code></div></li>
+        </ul>
+      </section>
+
+      <section class="comp" aria-labelledby="c-type">
+        <h2 id="c-type" class="comp-title">Tipografía</h2>
+        <p class="display display--l">Display <span class="w600">Semibold</span></p>
+        <p class="meta" style="margin-top:8px">Serif de alto contraste (Erotique; en la maqueta, Bodoni Moda como sustituta).</p>
+        <p style="font-size:20px;margin-top:20px">Poppins Regular para texto y UI. <strong>Poppins Semibold</strong> para énfasis y botones.</p>
+      </section>
+
+      <section class="comp" aria-labelledby="c-btn">
+        <h2 id="c-btn" class="comp-title">Botones</h2>
+        <div class="demo-row">
+          <button class="btn btn--primary" type="button">Primario</button>
+          <button class="btn btn--secondary" type="button">Secundario</button>
+          <button class="btn btn--outline" type="button">Contorno</button>
+          <button class="btn" type="button" disabled>Deshabilitado</button>
+        </div>
+      </section>
+
+      <section class="comp" aria-labelledby="c-badge">
+        <h2 id="c-badge" class="comp-title">Badges</h2>
+        <div class="demo-row">
+          <span class="badge badge--vigente">Vigente</span>
+          <span class="badge badge--caducada">Caducada</span>
+          <span class="badge badge--sin-acceso">Sin acceso</span>
+          <span class="badge badge--completado">Completado</span>
+          <span class="badge badge--pendiente">Pendiente</span>
+          <span class="badge badge--no-publicado">No publicado</span>
+          <span class="badge badge--en-revision">En revisión</span>
+          <span class="badge badge--publicada">Publicada</span>
+        </div>
+      </section>
+
+      <section class="comp" aria-labelledby="c-field">
+        <h2 id="c-field" class="comp-title">Campos</h2>
+        <div class="demo-grid demo-grid--2" style="max-width:1000px">
+          <div class="field">
+            <label for="d1">Campo con ayuda</label>
+            <input class="input" id="d1" type="text" aria-describedby="d1-help">
+            <p class="field__help" id="d1-help">Texto de ayuda breve.</p>
+          </div>
+          <div class="field field--error">
+            <label for="d2">Campo con error</label>
+            <input class="input" id="d2" type="email" value="ana@" aria-invalid="true" aria-describedby="d2-err">
+            <p class="field__error" id="d2-err">Escribe un email válido, por ejemplo nombre@empresa.com.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="comp" aria-labelledby="c-msg">
+        <h2 id="c-msg" class="comp-title">Mensajes de sistema</h2>
+        <div class="demo-grid">
+          <div class="sysmsg sysmsg--success" style="border-radius:12px"><div class="sysmsg__inner" style="padding-inline:14px"><span class="sysmsg__icon" aria-hidden="true">✓</span><p class="sysmsg__text">Cambios guardados.</p></div></div>
+          <div class="sysmsg sysmsg--error" style="border-radius:12px"><div class="sysmsg__inner" style="padding-inline:14px"><span class="sysmsg__icon" aria-hidden="true">!</span><p class="sysmsg__text">No pudimos guardar los cambios. Inténtalo de nuevo.</p></div></div>
+        </div>
+      </section>
+
+      <section class="comp" aria-labelledby="c-mod">
+        <h2 id="c-mod" class="comp-title">Fila de módulo y lámina de módulos</h2>
+        <div class="band band--dark on-dark" style="padding:8px 20px;border-radius:20px">
+          <ol class="module-list" data-component="module-list" data-variant="course"></ol>
+        </div>
+        <p style="margin-top:16px"><button type="button" class="btn btn--outline" data-sheet-open="modules-sheet" aria-controls="modules-sheet" aria-expanded="false">Abrir lámina de módulos</button></p>
+      </section>
+
+      <section class="comp" aria-labelledby="c-pdf">
+        <h2 id="c-pdf" class="comp-title">Fila de PDF</h2>
+        <ul class="pdf-list" style="max-width:720px">
+          <li class="pdf-row">
+            <span class="pdf-row__icon" aria-hidden="true">PDF</span>
+            <div class="pdf-row__info"><p class="pdf-row__title">Guía del módulo</p><p class="meta">Título de ejemplo</p></div>
+            <a class="btn btn--outline btn--sm" href="#" aria-label="Descargar Guía del módulo, PDF">Descargar</a>
+          </li>
+        </ul>
+        <p class="note">La descarga incluye una marca de agua con tu nombre, tu correo y la fecha.</p>
+      </section>
+
+      <section class="comp" aria-labelledby="c-faq">
+        <h2 id="c-faq" class="comp-title">Acordeón y opinión</h2>
+        <div class="demo-grid demo-grid--2">
+          <div class="faq" data-single>
+            <details class="faq-item" open><summary>Pregunta abierta<span class="faq-item__icon" aria-hidden="true"></span></summary><div class="faq-item__body"><p>Respuesta de ejemplo. Solo una pregunta abierta a la vez.</p></div></details>
+            <details class="faq-item"><summary>Pregunta cerrada<span class="faq-item__icon" aria-hidden="true"></span></summary><div class="faq-item__body"><p>Respuesta de ejemplo.</p></div></details>
+          </div>
+          <div class="opinion">
+            <p class="opinion__quote">Texto de una opinión aprobada, con medida de lectura cómoda.</p>
+            <p class="opinion__who"><span class="avatar" aria-hidden="true">AT</span><span><strong>Nombre A.</strong>Cargo</span></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="comp" aria-labelledby="c-ticket">
+        <h2 id="c-ticket" class="comp-title">Ticket de certificado</h2>
+        <div class="ticket-wrap" style="max-width:640px">
+          <div class="ticket">
+            <div class="ticket__main">
+              <p class="eyebrow" style="margin:0">Certificado</p>
+              <p class="ticket__name">Ana María Torres</p>
+              <p class="ticket__divider"><span aria-hidden="true">✦</span></p>
+              <p class="ticket__course">Jefes a Punto</p>
+            </div>
+            <div class="ticket__stub">
+              <a class="btn btn--primary btn--block" href="#">Descargar certificado</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div data-component="module-sheet" data-id="modules-sheet"></div>
+  <div data-component="footer" data-from="papel"></div>
+  <div class="mockbar"></div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mis cursos · Jefes a Punto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=Poppins:wght@400;600&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body data-screen="07">
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <div data-component="header" data-session="user" data-variant="dark" data-current="curso"></div>
+
+  <main id="main">
+    <section class="page-hero on-dark">
+      <div class="container">
+        <p class="eyebrow">Curso</p>
+        <h1 class="display display--m">Mis cursos</h1>
+        <p class="lead">Los módulos se recorren en el orden que prefieras.</p>
+      </div>
+    </section>
+    <div class="tear" style="--from:var(--exhibicion);--to:var(--papel)" aria-hidden="true"></div>
+
+    <section class="band band--tight band--papel" style="padding-bottom:88px" aria-label="Cursos de tu matrícula">
+      <div class="container">
+
+        <article class="course-card" data-estado="con-curso" aria-labelledby="course-title">
+          <div class="ph course-card__media" role="img" aria-label="Imagen pendiente del cliente">
+            <span class="ph__label">Imagen pendiente del cliente</span>
+          </div>
+          <div class="course-card__body">
+            <p class="eyebrow" style="margin:0">6 módulos · Vídeo, texto y PDF</p>
+            <h2 id="course-title" class="display display--m">Jefes a Punto</h2>
+            <p>Curso virtual para quienes dirigen equipos: comunicación, delegación, feedback y prioridades.</p>
+            <p class="access-line"><span class="badge badge--vigente">Vigente</span><span>Acceso hasta el 2 abr 2027</span></p>
+            <a class="btn btn--primary" href="08-modulos.html" aria-label="Ver los módulos de Jefes a Punto">Ver módulos</a>
+          </div>
+        </article>
+
+        <div class="empty" data-estado="vacio">
+          <h2 class="display display--s">Sin cursos</h2>
+          <p>No hay cursos publicados para tu matrícula.</p>
+          <a class="btn btn--outline" href="06-perfil.html?estado=vigente#matricula">Ir a mi cuenta</a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <div data-component="footer" data-from="papel"></div>
+  <div class="mockbar"></div>
+</body>
+</html>

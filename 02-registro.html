@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crear cuenta · Jefes a Punto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=Poppins:wght@400;600&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body data-screen="02">
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <div data-component="header" data-session="anon" data-variant="dark" data-current="registro"></div>
+
+  <div class="sysmsg sysmsg--success" role="status" data-estado="exito">
+    <div class="container sysmsg__inner">
+      <span class="sysmsg__icon" aria-hidden="true">✓</span>
+      <p class="sysmsg__text">Cuenta creada correctamente.</p>
+    </div>
+  </div>
+
+  <main id="main">
+    <section class="page-hero on-dark">
+      <div class="container container--narrow">
+        <p class="eyebrow">Jefes a Punto</p>
+        <h1 class="display display--m" data-estado="vacio error">Crear cuenta</h1>
+        <h1 class="display display--m" data-estado="exito">Bienvenida, Ana María</h1>
+        <p class="lead" data-estado="vacio error">Regístrate con tus datos. Podrás entrar al curso cuando se active tu matrícula.</p>
+        <p class="lead" data-estado="exito">Tu cuenta ya existe. Falta que el equipo active tu acceso.</p>
+      </div>
+    </section>
+    <div class="tear" style="--from:var(--exhibicion);--to:var(--papel)" aria-hidden="true"></div>
+
+    <!-- Formulario: estados vacío y error -->
+    <section class="auth" data-estado="vacio error">
+      <div class="container container--narrow">
+        <form id="register-form" novalidate data-validate data-on-success="state:exito"
+          data-preset='{"error":{"values":{"nombre":"Ana María Torres","email":"ana.torres@empresa.com","prefijo":"+52","telefono":"55 1234 5678","cargo":"Jefa de operaciones","empresa":"","profesion":"Ingeniera industrial","idioma":"es","password":"claridad2026","password2":"claridad2026","consentimiento":false},"errors":{"email":"Este email ya tiene una cuenta. Entra o recupera tu contraseña.","consentimiento":"Marca la casilla de consentimiento para crear la cuenta."}}}'>
+
+          <div class="alert" data-error-summary tabindex="-1" role="alert" hidden>
+            <p class="alert__title">Revisa los campos antes de continuar</p>
+            <ul></ul>
+          </div>
+
+          <div class="field">
+            <label for="nombre">Nombre y apellidos</label>
+            <input class="input" id="nombre" name="nombre" type="text" autocomplete="name" required data-msg-required="Escribe tu nombre y apellidos.">
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input class="input" id="email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="email-help" data-msg-required="Escribe tu email.">
+            <p class="field__help" id="email-help">Será tu usuario para entrar.</p>
+          </div>
+
+          <div class="field">
+            <label for="telefono">Teléfono</label>
+            <div class="phone">
+              <select class="input input--select" id="prefijo" name="prefijo" aria-label="Indicativo de país" required data-msg-required="Elige el indicativo de país de tu teléfono.">
+                <option value="">Indicativo</option>
+                <option value="+54">+54 Argentina</option>
+                <option value="+591">+591 Bolivia</option>
+                <option value="+56">+56 Chile</option>
+                <option value="+57">+57 Colombia</option>
+                <option value="+506">+506 Costa Rica</option>
+                <option value="+593">+593 Ecuador</option>
+                <option value="+503">+503 El Salvador</option>
+                <option value="+34">+34 España</option>
+                <option value="+1">+1 Estados Unidos</option>
+                <option value="+502">+502 Guatemala</option>
+                <option value="+52">+52 México</option>
+                <option value="+507">+507 Panamá</option>
+                <option value="+595">+595 Paraguay</option>
+                <option value="+51">+51 Perú</option>
+                <option value="+1-pr">+1 Puerto Rico</option>
+                <option value="+1-do">+1 Rep. Dominicana</option>
+                <option value="+598">+598 Uruguay</option>
+                <option value="+58">+58 Venezuela</option>
+                <option value="otro">Otro país</option>
+              </select>
+              <input class="input" id="telefono" name="telefono" type="tel" autocomplete="tel-national" inputmode="tel" required aria-describedby="tel-help" data-msg-required="Escribe tu número de teléfono.">
+            </div>
+            <p class="field__help" id="tel-help">Elige el indicativo y escribe el número sin él.</p>
+          </div>
+
+          <div class="field">
+            <label for="cargo">Cargo</label>
+            <input class="input" id="cargo" name="cargo" type="text" autocomplete="organization-title" required aria-describedby="cargo-help" data-msg-required="Escribe tu cargo.">
+            <p class="field__help" id="cargo-help">Por ejemplo: jefa de ventas, coordinador de turno.</p>
+          </div>
+
+          <div class="field">
+            <label for="empresa">Empresa <span class="optional">(opcional)</span></label>
+            <input class="input" id="empresa" name="empresa" type="text" autocomplete="organization">
+          </div>
+
+          <div class="field">
+            <label for="profesion">Profesión <span class="optional">(opcional)</span></label>
+            <input class="input" id="profesion" name="profesion" type="text">
+          </div>
+
+          <div class="field">
+            <label for="idioma">Idioma preferido</label>
+            <select class="input input--select" id="idioma" name="idioma" required aria-describedby="idioma-help" data-consent-source>
+              <option value="es" lang="es">Español</option>
+              <option value="en" lang="en">English</option>
+            </select>
+            <p class="field__help" id="idioma-help">Define el idioma del curso y de la plataforma. Puedes cambiarlo después en tu cuenta.</p>
+          </div>
+
+          <div class="field">
+            <label for="password">Contraseña</label>
+            <div class="password">
+              <input class="input" id="password" name="password" type="password" autocomplete="new-password" minlength="8" required aria-describedby="pw-help" data-msg-required="Crea una contraseña.">
+              <button type="button" class="password__toggle" data-toggle-password="#password" aria-pressed="false" aria-label="Mostrar contraseña">Mostrar</button>
+            </div>
+            <p class="field__help" id="pw-help">Mínimo 8 caracteres.</p>
+          </div>
+
+          <div class="field">
+            <label for="password2">Confirma la contraseña</label>
+            <input class="input" id="password2" name="password2" type="password" autocomplete="new-password" required data-match="#password" data-msg-required="Repite la contraseña.">
+          </div>
+
+          <div class="field">
+            <label class="check" for="consentimiento">
+              <input id="consentimiento" name="consentimiento" type="checkbox" required data-msg-required="Marca la casilla de consentimiento para crear la cuenta.">
+              <span>Acepto el tratamiento de mis datos según el <a href="11-legal.html?doc=consentimiento&amp;ambito=latam" data-consent-link target="_blank" rel="noopener">texto de consentimiento</a>. <span class="optional">(obligatorio)</span></span>
+            </label>
+          </div>
+
+          <div class="form-actions">
+            <button class="btn btn--primary btn--block" type="submit">Registrarme</button>
+          </div>
+          <p class="note note--box">El acceso al curso se activa cuando el equipo confirma el pago. Crear la cuenta no abre los módulos.</p>
+        </form>
+
+        <p class="auth__foot">¿Ya tienes cuenta? <a href="03-ingreso.html">Entrar</a></p>
+      </div>
+    </section>
+
+    <!-- Éxito: lleva al perfil -->
+    <section class="auth" data-estado="exito">
+      <div class="container container--narrow">
+        <div class="status-panel">
+          <span class="status-panel__icon" aria-hidden="true">✓</span>
+          <h2 class="display display--s">Tu cuenta está creada</h2>
+          <p>En tu cuenta verás el estado de tu matrícula. Hasta que el equipo confirme el pago, aparecerá así:</p>
+          <p><span class="badge badge--sin-acceso">Sin acceso</span></p>
+          <a class="btn btn--primary btn--block" href="06-perfil.html?estado=sin-matricula">Ir a mi cuenta</a>
+          <p class="mock-note">En producción, tras el registro se redirige directamente al perfil.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-component="footer" data-from="papel"></div>
+  <div class="mockbar"></div>
+</body>
+</html>

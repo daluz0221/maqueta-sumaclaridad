@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Acceso no disponible · Jefes a Punto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=Poppins:wght@400;600&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body data-screen="05">
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <div data-component="header" data-session="user" data-variant="dark" data-current="curso"
+    data-course-href="06-perfil.html?estado=sin-matricula#matricula" data-account-href="06-perfil.html?estado=sin-matricula" data-estado="sin-acceso"></div>
+  <div data-component="header" data-session="user" data-variant="dark" data-current="curso"
+    data-course-href="06-perfil.html?estado=caducada#matricula" data-account-href="06-perfil.html?estado=caducada" data-estado="caducada"></div>
+
+  <main id="main">
+    <section class="denied finale on-dark" aria-labelledby="denied-title">
+      <div class="finale__media" aria-hidden="true"></div>
+      <div class="container container--text denied__inner" style="text-align:left">
+        <p class="eyebrow" style="margin:0">Curso · Jefes a Punto</p>
+        <h1 id="denied-title" class="display display--l">Acceso no disponible</h1>
+
+        <p class="status-line" style="margin:0" data-estado="sin-acceso">
+          <span class="badge badge--sin-acceso">Sin acceso</span>
+          <span class="meta">Aún no hay matrícula activa</span>
+        </p>
+        <p class="status-line" style="margin:0" data-estado="caducada">
+          <span class="badge badge--caducada">Caducada</span>
+          <span class="meta">Desde el 10 sep 2026</span>
+        </p>
+
+        <p class="lead" data-estado="sin-acceso">Tu cuenta todavía no tiene una matrícula activa. Cuando el equipo confirme el pago, un administrador activará tu acceso.</p>
+        <p class="lead" data-estado="caducada">Tu acceso al curso caducó el 10 de septiembre de 2026, al cumplirse los seis meses desde la activación.</p>
+
+        <div class="btn-row" data-estado="sin-acceso">
+          <a class="btn btn--light" href="06-perfil.html?estado=sin-matricula#matricula">Ir a mi cuenta</a>
+          <a class="btn btn--outline-light" href="01-home.html?estado=sesion">Volver al inicio</a>
+        </div>
+        <div class="btn-row" data-estado="caducada">
+          <a class="btn btn--light" href="06-perfil.html?estado=caducada#matricula">Ir a mi cuenta</a>
+          <a class="btn btn--outline-light" href="01-home.html?estado=sesion">Volver al inicio</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-component="footer" data-from="exhibicion"></div>
+  <div class="mockbar"></div>
+</body>
+</html>

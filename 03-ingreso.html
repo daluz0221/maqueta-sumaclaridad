@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entrar · Jefes a Punto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=Poppins:wght@400;600&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body data-screen="03">
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <div data-component="header" data-session="anon" data-variant="dark" data-current="entrar"></div>
+
+  <main id="main">
+    <section class="page-hero on-dark">
+      <div class="container container--narrow">
+        <p class="eyebrow">Jefes a Punto</p>
+        <h1 class="display display--m">Entrar</h1>
+        <p class="lead">Usa el email y la contraseña con los que te registraste.</p>
+      </div>
+    </section>
+    <div class="tear" style="--from:var(--exhibicion);--to:var(--papel)" aria-hidden="true"></div>
+
+    <section class="auth">
+      <div class="container container--narrow">
+        <form id="login-form" novalidate data-validate data-on-success="go:07-mis-cursos.html"
+          data-preset='{"error":{"values":{"email":"ana.torres@empresa.com","password":"claridad2025"}}}'>
+
+          <div class="alert" role="alert" data-estado="error">
+            <p class="alert__title">No pudimos iniciar sesión</p>
+            <p>El email o la contraseña no son correctos. Revisa los datos e inténtalo de nuevo.</p>
+          </div>
+
+          <div class="alert" data-error-summary tabindex="-1" role="alert" hidden>
+            <p class="alert__title">Revisa los campos antes de continuar</p>
+            <ul></ul>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input class="input" id="email" name="email" type="email" autocomplete="username" inputmode="email" required data-msg-required="Escribe tu email.">
+          </div>
+
+          <div class="field">
+            <label for="password">Contraseña</label>
+            <div class="password">
+              <input class="input" id="password" name="password" type="password" autocomplete="current-password" required data-msg-required="Escribe tu contraseña.">
+              <button type="button" class="password__toggle" data-toggle-password="#password" aria-pressed="false" aria-label="Mostrar contraseña">Mostrar</button>
+            </div>
+          </div>
+
+          <div class="auth__row">
+            <a href="04-recuperar.html">Olvidé mi contraseña</a>
+          </div>
+
+          <div class="form-actions">
+            <button class="btn btn--primary btn--block" type="submit">Entrar</button>
+          </div>
+        </form>
+
+        <p class="auth__foot">¿Aún no tienes cuenta? <a href="02-registro.html">Crear cuenta</a></p>
+      </div>
+    </section>
+  </main>
+
+  <div data-component="footer" data-from="papel"></div>
+  <div class="mockbar"></div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tu opinión · Jefes a Punto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=Poppins:wght@400;600&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body data-screen="10">
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <div data-component="header" data-session="user" data-variant="dark" data-current="cuenta"></div>
+
+  <div class="sysmsg sysmsg--success" role="status" data-estado="pendiente">
+    <div class="container sysmsg__inner">
+      <span class="sysmsg__icon" aria-hidden="true">✓</span>
+      <p class="sysmsg__text">Recibimos tu opinión. El equipo la revisará antes de publicarla.</p>
+      <button type="button" class="sysmsg__close" data-dismiss aria-label="Cerrar mensaje">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <main id="main">
+    <section class="page-hero on-dark">
+      <div class="container container--text">
+        <nav aria-label="Miga de pan">
+          <ol class="crumbs">
+            <li><a href="06-perfil.html?estado=vigente">Mi cuenta</a></li>
+            <li><span aria-current="page">Opinión</span></li>
+          </ol>
+        </nav>
+        <h1 class="display display--m">Tu opinión</h1>
+        <p class="lead">Cuéntanos cómo te fue con el curso. Tu opinión se publica en la página de inicio solo después de que el equipo la revise.</p>
+      </div>
+    </section>
+    <div class="tear" style="--from:var(--exhibicion);--to:var(--papel)" aria-hidden="true"></div>
+
+    <div class="band band--tight band--papel" style="padding-bottom:88px">
+      <div class="container container--text stack">
+
+        <!-- Estado de la última opinión -->
+        <section class="card opinion-status" aria-labelledby="status-title">
+          <div class="card__head" style="margin:0">
+            <h2 id="status-title" class="card__title">Última opinión</h2>
+            <span class="badge badge--en-revision" data-estado="pendiente">En revisión</span>
+            <span class="badge badge--publicada" data-estado="publicada">Publicada</span>
+          </div>
+
+          <p data-estado="no-enviada">Aún no has enviado ninguna opinión.</p>
+
+          <div class="stack" style="--s:14px" data-estado="pendiente">
+            <blockquote data-bind="opinion-text">El módulo de delegación me ayudó a repartir mejor las tareas del turno. Volví a los PDF varias veces.</blockquote>
+            <p class="meta">Enviada el 8 nov 2026. Pendiente de revisión.</p>
+          </div>
+
+          <div class="stack" style="--s:14px" data-estado="publicada">
+            <blockquote>El módulo de delegación me ayudó a repartir mejor las tareas del turno. Volví a los PDF varias veces.</blockquote>
+            <p class="meta">Publicada en la página de inicio el 30 oct 2026.</p>
+          </div>
+        </section>
+
+        <!-- Formulario -->
+        <section class="card" aria-labelledby="form-title">
+          <h2 id="form-title" class="card__title" style="margin-bottom:16px">
+            <span data-estado="no-enviada">Escribe tu opinión</span>
+            <span data-estado="pendiente publicada">Nueva opinión</span>
+          </h2>
+
+          <p class="note note--box" style="margin:0 0 20px" data-estado="pendiente">Podrás enviar otra opinión cuando el equipo revise la que está pendiente.</p>
+
+          <form id="opinion-form" novalidate data-validate data-on-success="state:pendiente">
+            <div class="field">
+              <label for="opinion">Tu opinión</label>
+              <textarea class="input" id="opinion" name="opinion" maxlength="600" minlength="20" required
+                aria-describedby="op-help op-count" data-counter="op-count"
+                data-msg-required="Escribe tu opinión antes de enviarla."
+                data-estado-disabled="pendiente"></textarea>
+              <p class="field__help" id="op-help">Entre 20 y 600 caracteres.</p>
+              <p class="counter" id="op-count" aria-live="polite">0 / 600</p>
+            </div>
+            <button class="btn btn--primary btn--block" type="submit" data-estado="no-enviada publicada">Enviar opinión</button>
+            <button class="btn btn--block" type="button" disabled data-estado="pendiente">Enviar opinión</button>
+          </form>
+        </section>
+
+        <p><a class="link-btn" href="06-perfil.html?estado=vigente">← Volver a mi cuenta</a></p>
+      </div>
+    </div>
+  </main>
+
+  <div data-component="footer" data-from="papel"></div>
+  <div class="mockbar"></div>
+</body>
+</html>
