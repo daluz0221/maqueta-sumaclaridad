@@ -31,10 +31,6 @@
         <h1 id="hero-title" class="display display--xl hero__title">
           <span class="hero__title-line">Jefes a</span> <span class="hero__title-line w600">Punto</span>
         </h1>
-        <p class="hero__hello" data-estado="sesion">
-          <span class="badge badge--vigente">Vigente</span>
-          <span class="meta">&nbsp;Hola, Ana María. Tu acceso dura hasta el 2 abr 2027.</span>
-        </p>
         <p class="hero__lead">Un curso virtual para quienes dirigen equipos: comunicar, delegar, dar feedback y ordenar prioridades, a tu ritmo.</p>
         <div class="btn-row hero__actions" data-estado="!sesion">
           <a class="btn btn--light" href="02-registro.html">Crear cuenta</a>
@@ -54,7 +50,7 @@
       <div class="container about">
         <div>
           <p class="eyebrow">El curso</p>
-          <h2 id="about-title" class="display display--l">Para quién <span class="title-pill" aria-hidden="true"></span> es</h2>
+          <h2 id="about-title" class="display display--l">Para quién es</h2>
           <div class="prose about__text">
             <p>Para personas que dirigen equipos, o que acaban de empezar a hacerlo, y quieren herramientas claras para el día a día.</p>
             <p>Recorres los módulos en el orden que prefieras, desde cualquier dispositivo, durante seis meses a partir de la activación de tu acceso.</p>
@@ -88,7 +84,7 @@
               <span class="step__num" aria-hidden="true">01</span>
               <div>
                 <h3 class="step__title">Regístrate</h3>
-                <p class="step__text">Crea tu cuenta con tus datos y tu idioma preferido.</p>
+                <p class="step__text">Crea tu cuenta con tus datos.</p>
                 <p class="step__foot">Paso 01 · Cuenta</p>
               </div>
             </li>
@@ -144,16 +140,27 @@
           <p class="eyebrow">Opiniones</p>
           <h2 id="op-title" class="display display--l">Lo que cuentan</h2>
         </div>
-        <ul class="opinions">
-          <li class="opinion">
-            <p class="opinion__quote">Me llevé conversaciones concretas para el lunes siguiente. El módulo de feedback lo vi dos veces.</p>
-            <p class="opinion__who"><span class="avatar" aria-hidden="true">CM</span><span><strong>Carolina M.</strong>Jefa de operaciones</span></p>
-          </li>
-          <li class="opinion">
-            <p class="opinion__quote">Pude avanzar a mi ritmo y volver a los PDF cada vez que los necesité con mi equipo.</p>
-            <p class="opinion__who"><span class="avatar" aria-hidden="true">DR</span><span><strong>Daniel R.</strong>Coordinador de proyectos</span></p>
-          </li>
-        </ul>
+        <div class="opinions-carousel" data-carousel>
+          <ul class="opinions">
+            <li class="opinion" data-carousel-slide>
+              <p class="opinion__quote">Me llevé conversaciones concretas para el lunes siguiente. El módulo de feedback lo vi dos veces.</p>
+              <p class="opinion__who"><strong>Carolina M.</strong> Jefa de operaciones</p>
+            </li>
+            <li class="opinion" data-carousel-slide>
+              <p class="opinion__quote">Pude avanzar a mi ritmo y volver a los PDF cada vez que los necesité con mi equipo.</p>
+              <p class="opinion__who"><strong>Daniel R.</strong> Coordinador de proyectos</p>
+            </li>
+          </ul>
+          <div class="carousel__nav" data-carousel-nav>
+            <button type="button" class="carousel__btn" data-carousel-prev aria-label="Opinión anterior">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M14.5 5.5L8 12l6.5 6.5"/></svg>
+            </button>
+            <div class="carousel__dots" data-carousel-dots></div>
+            <button type="button" class="carousel__btn" data-carousel-next aria-label="Opinión siguiente">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9.5 5.5L16 12l-6.5 6.5"/></svg>
+            </button>
+          </div>
+        </div>
         <p class="mock-note" style="margin-top:24px">Textos de ejemplo. Solo se muestran opiniones aprobadas por un administrador.</p>
       </div>
     </section>

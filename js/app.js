@@ -28,7 +28,7 @@
     { n: '08', file: '08-modulos.html', name: 'Módulos del curso', route: '/curso/jefes-a-punto/', states: [['algunos', 'Algunos completados'], ['ninguno', 'Todos pendientes'], ['todos', 'Los seis completados']] },
     { n: '09', file: '09-modulo.html', name: 'Detalle de módulo', route: '/curso/jefes-a-punto/<slug>/', states: [['completo', 'Recursos completos'], ['sin-recursos', 'Sin vídeo ni PDF'], ['completado', 'Módulo completado'], ['staff', 'Staff · no publicado']] },
     { n: '10', file: '10-opinion.html', name: 'Opinión', route: 'Opinión (ruta pendiente)', states: [['no-enviada', 'No enviada'], ['pendiente', 'Pendiente de revisión'], ['publicada', 'Publicada']] },
-    { n: '11', file: '11-legal.html', name: 'Legales', route: 'Legal (ruta pendiente)', states: [], links: [['?doc=privacidad&ambito=latam', 'Privacidad · LATAM'], ['?doc=terminos&ambito=espana', 'Términos · España'], ['?doc=consentimiento&ambito=eeuu', 'Consentimiento · EE. UU.']] },
+    { n: '11', file: '11-legal.html', name: 'Legales', route: 'Legal (ruta pendiente)', states: [], links: [['?doc=privacidad&ambito=latam', 'Privacidad · LATAM'], ['?doc=terminos&ambito=espana', 'Términos · España'], ['?doc=consentimiento&ambito=espana', 'Consentimiento · España']] },
     { n: '12', file: '12-curso-completado.html', name: 'Curso completado', route: 'Estado de /curso/jefes-a-punto/', states: [] }
   ];
 
@@ -36,32 +36,16 @@
     es: {
       home: 'Inicio', login: 'Entrar', register: 'Crear cuenta', course: 'Curso', account: 'Mi cuenta', logout: 'Salir',
       menu: 'Menú', closeMenu: 'Cerrar menú', navigation: 'Navegación', mainNav: 'Navegación principal',
-      language: 'Idioma', faq: 'Preguntas frecuentes', privacy: 'Privacidad', terms: 'Términos', consent: 'Consentimiento',
-      legal: 'Legal', scope: 'Ámbito legal', latam: 'LATAM', espana: 'España', eeuu: 'Estados Unidos',
+      faq: 'Preguntas frecuentes', privacy: 'Privacidad', terms: 'Términos', consent: 'Consentimiento',
+      legal: 'Legal', scope: 'Ámbito legal', latam: 'LATAM', espana: 'España',
       tagline: 'Curso virtual para quienes dirigen equipos.', footerNote: 'El pago se gestiona fuera de esta plataforma.',
       module: 'Módulo', modules: 'Módulos', courseModules: 'Módulos del curso', closeModules: 'Cerrar índice de módulos',
       anyOrder: 'Seis módulos, en el orden que prefieras', youAreHere: 'Estás aquí',
       completed: 'Completado', pending: 'Pendiente', moduleText: 'Introducción, vídeo, texto de apoyo y PDF.',
       homeModuleText: 'Introducción, vídeo, texto y PDF. Contenido pendiente del cliente.',
-      langSaved: 'Idioma actualizado. Los textos del curso y de la plataforma se muestran en español.',
       progress: (c) => `<strong>${c} de 6</strong> módulos completados`,
       missing: (m) => m === 1 ? 'Falta 1 módulo por aprobación del equipo.' : `Faltan ${m} módulos por aprobación del equipo.`,
-      prev: 'Anterior', next: 'Siguiente', es: 'Español', en: 'English'
-    },
-    en: {
-      home: 'Home', login: 'Log in', register: 'Create account', course: 'Course', account: 'My account', logout: 'Log out',
-      menu: 'Menu', closeMenu: 'Close menu', navigation: 'Navigation', mainNav: 'Main navigation',
-      language: 'Language', faq: 'FAQ', privacy: 'Privacy', terms: 'Terms', consent: 'Consent',
-      legal: 'Legal', scope: 'Legal region', latam: 'LATAM', espana: 'Spain', eeuu: 'United States',
-      tagline: 'An online course for people who lead teams.', footerNote: 'Payment is handled outside this platform.',
-      module: 'Module', modules: 'Modules', courseModules: 'Course modules', closeModules: 'Close module index',
-      anyOrder: 'Six modules, in any order you like', youAreHere: 'You are here',
-      completed: 'Completed', pending: 'Pending', moduleText: 'Introduction, video, supporting text and PDFs.',
-      homeModuleText: 'Introduction, video, text and PDFs. Content pending from client.',
-      langSaved: 'Language updated. Course and platform texts are now shown in English.',
-      progress: (c) => `<strong>${c} of 6</strong> modules completed`,
-      missing: (m) => m === 1 ? '1 module is waiting for team approval.' : `${m} modules are waiting for team approval.`,
-      prev: 'Previous', next: 'Next', es: 'Español', en: 'English'
+      prev: 'Anterior', next: 'Siguiente', prevOpinion: 'Opinión anterior', nextOpinion: 'Opinión siguiente', es: 'Español'
     }
   };
 
@@ -75,14 +59,16 @@
     terminos: 'Términos y condiciones',
     consentimiento: 'Consentimiento de datos'
   };
-  const SCOPES = { latam: 'LATAM', espana: 'España', eeuu: 'Estados Unidos' };
+  const SCOPES = { latam: 'LATAM', espana: 'España' };
 
-  const USER = { name: 'Ana María Torres' };
+  const USER = { name: 'Ana María Torres', greet: 'Ana María' };
 
   const ICONS = {
     close: '<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>',
     arrow: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M7.5 16.5l9-9M9 7.5h7.5V15"/></svg>',
-    check: '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>'
+    check: '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
+    chevL: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M14.5 5.5L8 12l6.5 6.5"/></svg>',
+    chevR: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9.5 5.5L16 12l-6.5 6.5"/></svg>'
   };
 
   /* ---------- Utilidades ---------- */
@@ -92,8 +78,9 @@
     set(k, v) { try { localStorage.setItem(k, v); } catch (e) { /* file:// sin storage */ } }
   };
 
-  let lang = STORE.get('jap-lang', 'es');
+  const lang = 'es';
   let scope = STORE.get('jap-scope', 'latam');
+  if (!SCOPES[scope]) scope = 'latam';
   let currentState = null;
   let lastTrigger = null;
 
@@ -135,13 +122,14 @@
 
   /* ---------- Cabecera, menú lámina y pie ---------- */
 
-  const PILL_COLORS = ['var(--granite)', 'var(--silk)', 'var(--exhibicion)', 'var(--silver)'];
-
-  function langSwitch(extraClass) {
-    return `<div class="segmented ${extraClass || ''}" role="group" aria-label="${t('language')}">
-      <button type="button" class="segmented__btn" data-lang="es" aria-pressed="${lang === 'es'}" aria-label="${t('es')}">ES</button>
-      <button type="button" class="segmented__btn" data-lang="en" aria-pressed="${lang === 'en'}" aria-label="${t('en')}">EN</button>
-    </div>`;
+  function navItems(links, current, session) {
+    return links.map((l) => {
+      const item = `<li><a class="site-nav__link${l.cta ? ' site-nav__link--cta' : ''}" href="${l.href}"${l.id === current ? ' aria-current="page"' : ''}>${t(l.k)}</a></li>`;
+      if (session === 'user' && l.id === 'cuenta') {
+        return `${item}<li><p class="site-nav__hello">Hola, ${USER.greet}</p></li>`;
+      }
+      return item;
+    }).join('');
   }
 
   function renderHeader(el, idx) {
@@ -167,11 +155,11 @@
       <header class="site-header${dark ? ' site-header--dark on-dark' : ''}">
         <div class="container site-header__inner">
           <a class="brand" href="${links[0].href}" aria-label="Jefes a Punto, ${t('home')}">
-            <span class="brand__mark" aria-hidden="true">J</span><span class="brand__name">Jefes a Punto</span>
+            <span class="brand__mark" aria-hidden="true">J</span>
           </a>
           <nav class="site-nav" aria-label="${t('mainNav')}">
             <ul class="site-nav__list">
-              ${links.map((l) => `<li><a class="site-nav__link${l.cta ? ' site-nav__link--cta' : ''}" href="${l.href}"${cur(l)}>${t(l.k)}</a></li>`).join('')}
+              ${navItems(links, current, session)}
             </ul>
           </nav>
           <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="${id}" data-sheet-open="${id}">
@@ -183,11 +171,10 @@
         <div class="sheet__paper">
           <div class="sheet__inner">
             <button type="button" class="sheet__close" data-sheet-close aria-label="${t('closeMenu')}">${ICONS.close}</button>
-            ${langSwitch()}
             <p class="sheet__divider"><span>${t('navigation')}</span></p>
-            ${session === 'user' ? `<p class="sheet__user">${USER.name}</p>` : ''}
+            ${session === 'user' ? `<p class="sheet__user">Hola, ${USER.greet}</p>` : ''}
             <ul class="sheet-list">
-              ${links.map((l, i) => `<li><a class="sheet-link" href="${l.href}"${cur(l)}><span class="sheet-link__pill" style="--c:${PILL_COLORS[i % PILL_COLORS.length]}" aria-hidden="true"></span><span>${t(l.k)}</span></a></li>`).join('')}
+              ${links.map((l) => `<li><a class="sheet-link" href="${l.href}"${cur(l)}>${t(l.k)}</a></li>`).join('')}
             </ul>
             <p class="sheet__foot"><a href="01-home.html#faq">${t('faq')}</a></p>
           </div>
@@ -214,19 +201,13 @@
                 <li><a href="${legal('privacidad')}">${t('privacy')}</a></li>
                 <li><a href="${legal('terminos')}">${t('terms')}</a></li>
                 <li><a href="${legal('consentimiento')}">${t('consent')}</a></li>
+                <li><a href="01-home.html#faq">${t('faq')}</a></li>
               </ul>
               <label class="footer-label" for="scope-${idx}">${t('scope')}</label>
               <select id="scope-${idx}" class="input input--select" data-scope-select>
                 ${Object.keys(SCOPES).map((k) => `<option value="${k}"${k === scope ? ' selected' : ''}>${t(k)}</option>`).join('')}
               </select>
             </nav>
-            <div class="site-footer__group">
-              <h2 class="footer-title">${t('language')}</h2>
-              ${langSwitch()}
-              <ul class="footer-links footer-links--spaced">
-                <li><a href="01-home.html#faq">${t('faq')}</a></li>
-              </ul>
-            </div>
           </div>
           <div class="container site-footer__base">
             <p class="meta">© 2026 Suma Claridad · Jefes a Punto</p>
@@ -346,12 +327,12 @@
   function renderAll() {
     const openSheet = $('.sheet:not([hidden])');
     const openId = openSheet ? openSheet.id : null;
-    document.documentElement.lang = lang;
+    document.documentElement.lang = 'es';
     $$('[data-component="header"]').forEach(renderHeader);
     $$('[data-component="footer"]').forEach(renderFooter);
     renderDynamic();
-    $$('#lang-form select[name="idioma"]').forEach((s) => { s.value = lang; });
-    $$('[data-lang-label]').forEach((el) => { el.textContent = lang === 'en' ? 'English' : 'Español'; });
+    $$('[data-lang-label]').forEach((el) => { el.textContent = t('es'); });
+    initCarousels();
     if (openId) openSheetById(openId, $(`[data-sheet-open="${openId}"]`), false);
   }
 
@@ -431,6 +412,7 @@
       } catch (e) { /* algunos navegadores bloquean replaceState en file:// */ }
     }
     renderDynamic();
+    initCarousels();
     applyPresets();
     if (opts.focus) {
       window.scrollTo({ top: 0 });
@@ -542,11 +524,8 @@
     if (action.startsWith('state:')) setState(action.slice(6), { focus: true });
     else if (action.startsWith('go:')) location.href = action.slice(3);
     else if (action === 'lang') {
-      const v = form.elements.idioma.value;
-      setLang(v);
       const flash = $('[data-flash]');
       if (flash) {
-        $('.sysmsg__text', flash).textContent = t('langSaved');
         flash.hidden = false;
         flash.setAttribute('tabindex', '-1');
         flash.focus();
@@ -554,24 +533,48 @@
     }
   }
 
-  /* ---------- Idioma y ámbito legal ---------- */
+  /* ---------- Carrusel de opiniones ---------- */
 
-  function setLang(v) {
-    if (!I18N[v]) return;
-    lang = v;
-    STORE.set('jap-lang', v);
-    renderAll();
+  function initCarousels() {
+    $$('[data-carousel]').forEach((root) => {
+      const slides = $$('[data-carousel-slide]', root);
+      const nav = $('[data-carousel-nav]', root);
+      const dots = $('[data-carousel-dots]', root);
+      if (slides.length <= 1) {
+        if (nav) nav.hidden = true;
+        slides.forEach((s) => { s.hidden = false; });
+        return;
+      }
+      if (nav) nav.hidden = false;
+      let i = Number(root.dataset.index || 0);
+      if (dots && !dots.dataset.ready) {
+        dots.innerHTML = slides.map((_, n) =>
+          `<button type="button" class="carousel__dot" data-carousel-goto="${n}" aria-label="Ir a la opinión ${n + 1}"></button>`
+        ).join('');
+        dots.dataset.ready = '1';
+      }
+      const go = (n) => {
+        i = ((n % slides.length) + slides.length) % slides.length;
+        root.dataset.index = String(i);
+        slides.forEach((s, k) => { s.hidden = k !== i; });
+        $$('[data-carousel-goto]', root).forEach((d, k) => {
+          if (k === i) d.setAttribute('aria-current', 'true');
+          else d.removeAttribute('aria-current');
+        });
+      };
+      root._carouselGo = go;
+      go(i);
+    });
   }
 
-  function consentScope(language) {
-    if (language === 'en') return 'eeuu';
+  /* ---------- Idioma y ámbito legal ---------- */
+
+  function consentScope() {
     return (navigator.language || '').toLowerCase() === 'es-es' ? 'espana' : 'latam';
   }
 
   function syncConsentLinks() {
-    const sel = $('select[name="idioma"][data-consent-source]');
-    const language = sel ? sel.value || 'es' : lang;
-    $$('[data-consent-link]').forEach((a) => { a.href = `11-legal.html?doc=consentimiento&ambito=${consentScope(language)}`; });
+    $$('[data-consent-link]').forEach((a) => { a.href = `11-legal.html?doc=consentimiento&ambito=${consentScope()}`; });
   }
 
   /* ---------- Legales ---------- */
@@ -580,7 +583,7 @@
     const root = $('[data-legal]');
     if (!root) return;
     let doc = LEGAL_DOCS[params.get('doc')] ? params.get('doc') : 'privacidad';
-    let amb = SCOPES[params.get('ambito')] ? params.get('ambito') : scope;
+    let amb = SCOPES[params.get('ambito')] ? params.get('ambito') : (SCOPES[scope] ? scope : 'latam');
     const update = () => {
       $$('[data-bind="doc-title"]').forEach((el) => { el.textContent = LEGAL_DOCS[doc]; });
       $$('[data-bind="scope-label"]').forEach((el) => { el.textContent = SCOPES[amb]; });
@@ -635,8 +638,13 @@
 
     if (e.target.classList && e.target.classList.contains('sheet')) { closeSheet(e.target); return; }
 
-    const l = e.target.closest('[data-lang]');
-    if (l) { setLang(l.dataset.lang); return; }
+    const carouselRoot = e.target.closest('[data-carousel]');
+    if (carouselRoot && carouselRoot._carouselGo) {
+      if (e.target.closest('[data-carousel-prev]')) { e.preventDefault(); carouselRoot._carouselGo(Number(carouselRoot.dataset.index || 0) - 1); return; }
+      if (e.target.closest('[data-carousel-next]')) { e.preventDefault(); carouselRoot._carouselGo(Number(carouselRoot.dataset.index || 0) + 1); return; }
+      const goto = e.target.closest('[data-carousel-goto]');
+      if (goto) { e.preventDefault(); carouselRoot._carouselGo(Number(goto.dataset.carouselGoto)); return; }
+    }
 
     const ms = e.target.closest('[data-mock-state]');
     if (ms) { setState(ms.dataset.mockState, { focus: !ms.closest('.mockbar') }); return; }
