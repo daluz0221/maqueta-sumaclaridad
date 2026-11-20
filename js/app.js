@@ -169,6 +169,14 @@
       </header>
       <div class="sheet" id="${id}" role="dialog" aria-modal="true" aria-label="${t('menu')}" hidden>
         <div class="sheet__paper">
+          <div class="sheet__corner sheet__corner--tl" aria-hidden="true"></div>
+          <div class="sheet__corner sheet__corner--tr" aria-hidden="true"></div>
+          <div class="sheet__corner sheet__corner--bl" aria-hidden="true"></div>
+          <div class="sheet__corner sheet__corner--br" aria-hidden="true"></div>
+          <div class="sheet__edge sheet__edge--top" aria-hidden="true"></div>
+          <div class="sheet__edge sheet__edge--bottom" aria-hidden="true"></div>
+          <div class="sheet__edge sheet__edge--left" aria-hidden="true"></div>
+          <div class="sheet__edge sheet__edge--right" aria-hidden="true"></div>
           <div class="sheet__inner">
             <button type="button" class="sheet__close" data-sheet-close aria-label="${t('closeMenu')}">${ICONS.close}</button>
             <p class="sheet__divider"><span>${t('navigation')}</span></p>
@@ -263,6 +271,14 @@
     el.innerHTML = `
       <div class="sheet" id="${id}" role="dialog" aria-modal="true" aria-label="${t('courseModules')}" hidden>
         <div class="sheet__paper">
+          <div class="sheet__corner sheet__corner--tl" aria-hidden="true"></div>
+          <div class="sheet__corner sheet__corner--tr" aria-hidden="true"></div>
+          <div class="sheet__corner sheet__corner--bl" aria-hidden="true"></div>
+          <div class="sheet__corner sheet__corner--br" aria-hidden="true"></div>
+          <div class="sheet__edge sheet__edge--top" aria-hidden="true"></div>
+          <div class="sheet__edge sheet__edge--bottom" aria-hidden="true"></div>
+          <div class="sheet__edge sheet__edge--left" aria-hidden="true"></div>
+          <div class="sheet__edge sheet__edge--right" aria-hidden="true"></div>
           <div class="sheet__inner sheet__inner--left">
             <button type="button" class="sheet__close" data-sheet-close aria-label="${t('closeModules')}">${ICONS.close}</button>
             <p class="sheet__divider"><span>Jefes a Punto</span></p>
@@ -428,6 +444,68 @@
       .filter((el) => !el.closest('[hidden]'));
   }
 
+  /* El motivo de los lados arranca y termina en tramo recto, para no cortar un semicírculo contra la esquina. */
+  function cenefaShift(length, prefer) {
+    const period = 400;
+    const arcs = [[28, 72], [228, 272]];
+    const cuts = (start) => {
+      const end = start + length;
+      const k0 = Math.floor(start / period) - 1;
+      const k1 = Math.floor(end / period) + 1;
+      for (let k = k0; k <= k1; k++) {
+        for (const [a, b] of arcs) {
+          const A = k * period + a;
+          const B = k * period + b;
+          const overlap = Math.min(B, end) - Math.max(A, start);
+          if (overlap > 0.5 && overlap < b - a - 0.5) return true;
+        }
+      }
+      return false;
+    };
+    let best = 0;
+    let bestDist = Infinity;
+    for (let start = 0; start < period; start++) {
+      if (cuts(start)) continue;
+      let dist = Math.abs(start - prefer) % period;
+      dist = Math.min(dist, period - dist);
+      if (dist < bestDist) { bestDist = dist; best = start; }
+    }
+    return `-${best}px`;
+  }
+
+  let cenefaObserver;
+  function fitCenefa(sheet) {
+    const paper = $('.sheet__paper', sheet);
+    if (!paper) return;
+    const top = $('.sheet__edge--top', paper);
+    const bottom = $('.sheet__edge--bottom', paper);
+    const left = $('.sheet__edge--left', paper);
+    const right = $('.sheet__edge--right', paper);
+    if (!top || !left) return;
+    const width = top.getBoundingClientRect().width;
+    const height = left.getBoundingClientRect().height;
+    if (width < 10 || height < 10) return;
+    top.style.setProperty('--cenefa-phase', cenefaShift(width, 160));
+    if (bottom) bottom.style.setProperty('--cenefa-phase', cenefaShift(width, 360));
+    left.style.setProperty('--cenefa-phase', cenefaShift(height, 160));
+    if (right) right.style.setProperty('--cenefa-phase', cenefaShift(height, 360));
+  }
+
+  function watchCenefa(sheet) {
+    const paper = $('.sheet__paper', sheet);
+    if (!paper) return;
+    if (!cenefaObserver) {
+      cenefaObserver = new ResizeObserver((entries) => {
+        entries.forEach((entry) => {
+          const open = entry.target.closest('.sheet');
+          if (open && !open.hidden) fitCenefa(open);
+        });
+      });
+    }
+    cenefaObserver.observe(paper);
+    requestAnimationFrame(() => fitCenefa(sheet));
+  }
+
   function openSheetById(id, trigger, focus = true) {
     const s = document.getElementById(id);
     if (!s) return;
@@ -435,6 +513,7 @@
     document.body.classList.add('is-locked');
     lastTrigger = trigger || lastTrigger;
     if (trigger) trigger.setAttribute('aria-expanded', 'true');
+    watchCenefa(s);
     if (focus) { const c = $('[data-sheet-close]', s); if (c) c.focus(); }
   }
 
