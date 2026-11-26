@@ -269,16 +269,8 @@
     const cur = currentModule();
     const done = completedSet();
     el.innerHTML = `
-      <div class="sheet" id="${id}" role="dialog" aria-modal="true" aria-label="${t('courseModules')}" hidden>
+      <div class="sheet sheet--modules" id="${id}" role="dialog" aria-modal="true" aria-label="${t('courseModules')}" hidden>
         <div class="sheet__paper">
-          <div class="sheet__corner sheet__corner--tl" aria-hidden="true"></div>
-          <div class="sheet__corner sheet__corner--tr" aria-hidden="true"></div>
-          <div class="sheet__corner sheet__corner--bl" aria-hidden="true"></div>
-          <div class="sheet__corner sheet__corner--br" aria-hidden="true"></div>
-          <div class="sheet__edge sheet__edge--top" aria-hidden="true"></div>
-          <div class="sheet__edge sheet__edge--bottom" aria-hidden="true"></div>
-          <div class="sheet__edge sheet__edge--left" aria-hidden="true"></div>
-          <div class="sheet__edge sheet__edge--right" aria-hidden="true"></div>
           <div class="sheet__inner sheet__inner--left">
             <button type="button" class="sheet__close" data-sheet-close aria-label="${t('closeModules')}">${ICONS.close}</button>
             <p class="sheet__divider"><span>Jefes a Punto</span></p>
