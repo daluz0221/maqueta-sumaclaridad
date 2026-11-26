@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Jefes a Punto — comportamiento de la maqueta (sin backend)
+   Suma Claridad — comportamiento de la maqueta (sin backend)
    Componentes compartidos, estados de maqueta, menú lámina, formularios.
    ========================================================================== */
 (function () {
@@ -154,8 +154,9 @@
     el.innerHTML = `
       <header class="site-header${dark ? ' site-header--dark on-dark' : ''}">
         <div class="container site-header__inner">
-          <a class="brand" href="${links[0].href}" aria-label="Jefes a Punto, ${t('home')}">
-            <span class="brand__mark" aria-hidden="true">J</span>
+          <a class="brand" href="${links[0].href}" aria-label="Suma Claridad, ${t('home')}">
+            <span class="brand__mark" aria-hidden="true">S</span>
+            <span class="brand__name">Suma Claridad</span>
           </a>
           <nav class="site-nav" aria-label="${t('mainNav')}">
             <ul class="site-nav__list">
@@ -199,7 +200,7 @@
         <div class="site-footer__body">
           <div class="container site-footer__grid">
             <div class="site-footer__brand">
-              <p class="brand brand--footer"><span class="brand__mark" aria-hidden="true">J</span><span class="brand__name">Jefes a Punto</span></p>
+              <p class="brand brand--footer"><span class="brand__mark" aria-hidden="true">S</span><span class="brand__name">Suma Claridad</span></p>
               <p>${t('tagline')}</p>
               <p class="meta">${t('footerNote')}</p>
             </div>
@@ -218,7 +219,7 @@
             </nav>
           </div>
           <div class="container site-footer__base">
-            <p class="meta">© 2026 Suma Claridad · Jefes a Punto</p>
+            <p class="meta">© 2026 Suma Claridad</p>
           </div>
         </div>
       </footer>`;
@@ -273,7 +274,7 @@
         <div class="sheet__paper">
           <div class="sheet__inner sheet__inner--left">
             <button type="button" class="sheet__close" data-sheet-close aria-label="${t('closeModules')}">${ICONS.close}</button>
-            <p class="sheet__divider"><span>Jefes a Punto</span></p>
+            <p class="sheet__divider"><span>Suma Claridad</span></p>
             <p class="sheet__sub">${t('anyOrder')}</p>
             <ul class="sheet-mods">
               ${MODULES.map((m) => {
@@ -309,7 +310,7 @@
     const i = MODULES.indexOf(m);
     $$('[data-bind="num"]').forEach((el) => { el.textContent = pad(m.n); });
     $$('[data-bind="title"]').forEach((el) => { el.textContent = modTitle(m); });
-    document.title = `${pad(m.n)} · ${modTitle(m)} · Jefes a Punto`;
+    document.title = `${pad(m.n)} · ${modTitle(m)} · Suma Claridad`;
     const setPager = (sel, mod) => {
       const a = $(sel);
       if (!a) return;
@@ -660,7 +661,7 @@
       $$('[data-bind="scope-label"]').forEach((el) => { el.textContent = SCOPES[amb]; });
       $$('[data-doc]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.doc === doc)));
       $$('[data-scope]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.scope === amb)));
-      document.title = `${LEGAL_DOCS[doc]} · ${SCOPES[amb]} · Jefes a Punto`;
+      document.title = `${LEGAL_DOCS[doc]} · ${SCOPES[amb]} · Suma Claridad`;
       try {
         const u = new URL(location.href);
         u.searchParams.set('doc', doc);

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Jefes a Punto — maqueta de interfaz
+   Suma Claridad — maqueta de interfaz
    Mobile first: base 390 px (360 útiles) · tablet ≥768 px · desktop ≥1280 px
    ========================================================================== */
 
@@ -186,9 +186,9 @@ h1[tabindex="-1"]:focus { outline: none; }
 }
 .brand__mark {
   width: 36px; height: 36px; border-radius: 50%; border: 1px solid currentColor;
-  display: grid; place-items: center; font-size: 1.1rem; font-weight: 600;
+  display: grid; place-items: center; font-size: 1.15rem; font-weight: 600; line-height: 1;
 }
-.site-header .brand__name { display: none; }
+.site-header .brand__name { font-size: 1.35rem; letter-spacing: .01em; }
 
 .site-nav { display: none; }
 .site-nav__list { display: flex; align-items: center; gap: 4px; list-style: none; }
@@ -589,27 +589,37 @@ textarea.input { min-height: 160px; resize: vertical; }
 .hero__meta div { display: grid; }
 .hero__meta dt { opacity: .78; }
 .hero__meta dd { margin: 0; font-weight: 600; }
-.hero__title { margin-top: 12px; }
-.hero__title-line { display: block; }
-.hero__lead { font-size: 17px; max-width: 38ch; margin: 0; }
+.hero__title {
+  margin-top: 12px;
+  font-size: clamp(2.15rem, 8.4vw, 3.15rem);
+  line-height: .95;
+  white-space: nowrap;
+}
+.hero__title-line { display: inline; }
+.hero__lead { font-size: 17px; max-width: 34ch; margin: 0 0 0 auto; text-align: right; }
 .hero__actions { margin-top: 8px; }
 
 @media (min-width: 768px) {
-  .hero__inner { padding-block: 16px 96px; gap: 28px; }
-  .hero__meta { grid-template-columns: repeat(4, 1fr); }
-  .hero__lead { font-size: 19px; }
-}
-@media (min-width: 1280px) {
   .hero__inner {
+    padding-block: 16px 96px;
+    row-gap: 20px;
     grid-template-columns: 1fr;
     grid-template-areas: "meta" "title" "lead" "actions";
-    padding-block: 24px 120px;
   }
-  .hero__meta { grid-area: meta; }
-  .hero__lead { grid-area: lead; }
-  .hero__title { grid-area: title; margin-top: 8px; }
-  .hero__title-line { display: inline; }
+  .hero__meta { grid-area: meta; grid-template-columns: repeat(4, 1fr); }
+  .hero__title { grid-area: title; font-size: clamp(4.5rem, 8.5vw, 6.4rem); margin-top: 8px; }
+  .hero__lead {
+    grid-area: lead;
+    justify-self: end;
+    margin: 4px 0 0;
+    font-size: 17px;
+  }
   .hero__actions { grid-area: actions; }
+}
+@media (min-width: 1280px) {
+  .hero__inner { padding-block: 24px 120px; }
+  .hero__title { font-size: 8.5rem; }
+  .hero__lead { font-size: 18px; }
 }
 
 /* ---------- Home: sobre el curso ---------- */
